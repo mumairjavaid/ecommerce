@@ -8,7 +8,7 @@ const Cart = () => {
     const items=useSelector((state)=>{
         return state.product
       })
-      console.log(items)
+
 
     const dispatch=useDispatch();
 
@@ -16,7 +16,9 @@ const Cart = () => {
         dispatch(Remove(value))
       }
 
-    
+    if(items.length === 0){
+      return <div>Your cart is empty!</div>
+    }
     
       return (
     <>
