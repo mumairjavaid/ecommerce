@@ -6,6 +6,7 @@ import {Add} from '../Store/ProductSlice'
 const Home = () => {
   
   const [productsInfo, setProductsInfo] = useState([])
+  console.log(productsInfo)
   
   const dispatch=useDispatch();
 
@@ -29,6 +30,10 @@ const Home = () => {
     products();
     }, []);
 
+    if(productsInfo.length===0){
+      return <h1>Loading......</h1>
+    }
+
   
     return (
     <>
@@ -43,6 +48,7 @@ const Home = () => {
                 </CardBody>
                 <CardFooter><Button onClick={()=>{AddItem(curr)}}>Add to Cart</Button>
                 <Spacer/>
+                <Button mr='20px'>{'$ '+ curr.price}</Button>
                 <Button>
                 {(items.filter((ele)=>{
                            return (ele.id===curr.id)
@@ -55,6 +61,7 @@ const Home = () => {
                 )
             })} 
           </Grid>
+          
     </>
   )
 }
